@@ -36,7 +36,7 @@ const expectFunction = (inputSchemaPath: string, expectedPropertiesPath: string,
 
 /**
  * Some of these test are purely theoretical and have little if any merit 
- * on a JSON Schema which actually makes sense but are used to test the principles.
+ * on a JSON Schema which actually makes sense, but they are used to test the principles.
  */
 describe('Simplification of properties', () => {
   afterAll(() => {

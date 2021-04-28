@@ -36,7 +36,7 @@ export default function simplifyProperties(schema: Schema | boolean, simplifier 
     combineSchemas(schema.then, output, simplifier, seenSchemas, schema);
     combineSchemas(schema.else, output, simplifier, seenSchemas, schema);
 
-    return !Object.keys(output).length ? undefined : output;
+    return Object.keys(output).length ? output : undefined;
   }
   return undefined;
 }
@@ -46,7 +46,7 @@ export default function simplifyProperties(schema: Schema | boolean, simplifier 
  * 
  * @param propName name of the property
  * @param propModel the corresponding model
- * @param schema the schema for the model
+ * @param schema for the model
  * @param currentModel the current output
  */
 function addToProperty(propName: string, propModel: CommonModel, schema: Schema, currentModel: Output) {
@@ -64,9 +64,9 @@ function addToProperty(propName: string, propModel: CommonModel, schema: Schema,
  * 
  * @param schema to go through
  * @param currentModel the current output
- * @param simplifier the simplifier to use
- * @param seenSchemas schemas which we already have outputs for
- * @param rootSchema the root schema we are combining schemas for
+ * @param simplifier to use
+ * @param seenSchemas which we already have outputs for
+ * @param rootSchema we are combining schemas for
  */
 function combineSchemas(schema: (Schema | boolean) | (Schema | boolean)[] | undefined, currentModel: Output, simplifier : Simplifier, seenSchemas: Map<any, Output>, rootSchema : Schema) {
   if (typeof schema !== 'object') return;
